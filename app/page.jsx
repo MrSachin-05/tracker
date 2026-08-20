@@ -60,14 +60,7 @@ export default async function Home() {
             Made with ❤️ by Mr.Sachin-05
           </div>
 
-        {/* added content for testing */}
-        <div class="gif-background"></div>
-<div class="gif-overlay"></div>
-
-<div class="page-content">
-  {/* ended */}
-  
-</div>
+       
 
           <h2 className="text-5xl font-bold text-gray-900 mb-4 tracking-tight">
             Don't Miss a Price Drop

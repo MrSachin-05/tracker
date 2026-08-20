@@ -50,30 +50,7 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* added for testing */
-.gif-background {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
 
-  background-image: url("https://cdn.dribbble.com/userupload/42202197/file/original-b90f3be5148c682e663f9ce7bef3ee90.gif");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.gif-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.page-content {
-  position: relative;
-  z-index: 1;
-}
-/* ended */
 
 :root {
   --background: oklch(1 0 0);
