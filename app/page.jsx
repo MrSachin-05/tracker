@@ -1,5 +1,5 @@
 import { createClient } from "@/utils/supabase/server";
-import { getProducts } from "./actions";
+import { getProducts } from "./action";
 import AddProductForm from "@/components/AddProductForm";
 import ProductCard from "@/components/ProductCard";
 import { TrendingDown, Shield, Bell, Rabbit } from "lucide-react";
@@ -41,11 +41,11 @@ export default async function Home() {
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-3">
             <Image
-              src="/deal-drop-logo.png"
+              src="/logo.png"
               alt="Deal Drop Logo"
               width={600}
               height={200}
-              className="h-10 w-auto"
+              className="h-15 w-auto"
             />
           </div>
 

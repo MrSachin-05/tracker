@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { deleteProduct } from "@/app/actions";
+import { deleteProduct } from "@/app/action";
 import PriceChart from "./PriceChart";
 import {
   Card,
