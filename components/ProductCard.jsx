@@ -9,7 +9,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import {
   ExternalLink,
@@ -83,12 +83,19 @@ export default function ProductCard({ product }) {
             )}
           </Button>
 
-          <Button variant="outline" size="sm" asChild className="gap-1">
-            <Link href={product.url} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="w-4 h-4" />
-              View Product
-            </Link>
-          </Button>
+          <Link
+            href={product.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({
+              variant: "outline",
+              size: "sm",
+              className: "gap-1",
+            })}
+          >
+            <ExternalLink className="w-4 h-4" />
+            View Product
+          </Link>
 
           <Button
             variant="ghost"
