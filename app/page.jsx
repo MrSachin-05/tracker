@@ -5,7 +5,7 @@ import ProductCard from "@/components/ProductCard";
 import { TrendingDown, Shield, Bell, Rabbit } from "lucide-react";
 import AuthButton from "@/components/AuthButton";
 import Image from "next/image";
-import { HexagonBackground } from "@/components/animate-ui/components/backgrounds/hexagon";
+import { StarsBackground } from "@/components/animate-ui/components/backgrounds/stars";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -38,18 +38,24 @@ export default async function Home() {
   ];
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-neutral-950">
+    <main className="relative min-h-screen overflow-hidden bg-black">
       {/* =====================================================
-          HEXAGON BACKGROUND
+          STARS BACKGROUND
       ===================================================== */}
       <div className="fixed inset-0 z-0">
-        <HexagonBackground className="absolute inset-0" />
+        <StarsBackground
+          className="absolute inset-0"
+          factor={0.03}
+          speed={60}
+          starColor="#ffffff"
+          pointerEvents={false}
+        />
       </div>
 
       {/* =====================================================
           BACKGROUND OVERLAY
       ===================================================== */}
-      <div className="fixed inset-0 z-[1] pointer-events-none bg-gradient-to-b from-black/40 via-black/10 to-black/40" />
+      <div className="fixed inset-0 z-[1] pointer-events-none bg-gradient-to-b from-black/30 via-transparent to-black/40" />
 
       {/* =====================================================
           PAGE CONTENT
@@ -59,35 +65,36 @@ export default async function Home() {
         {/* =====================================================
             HEADER
         ===================================================== */}
-        <header className="sticky top-0 z-[100] border-b border-white/15 bg-black/60 backdrop-blur-md">
-          <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative z-[101]">
+        <header className="sticky top-0 z-[100] border-b border-white/10 bg-transparent backdrop-blur-[2px]">
+  <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative z-[101]">
 
-            {/* Logo */}
-            <div className="group cursor-pointer">
-              <Image
-                src="/logo.png"
-                alt="Deal Drop Logo"
-                width={600}
-                height={200}
-                className="
-                  h-15
-                  w-auto
-                  transition-all
-                  duration-300
-                  group-hover:scale-105
-                  group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]
-                  group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.7)]
-                  motion-reduce:transition-none
-                "
-              />
-            </div>
+    {/* Logo */}
+    <div className="group cursor-pointer">
+      <Image
+        src="/logo.png"
+        alt="Deal Drop Logo"
+        width={600}
+        height={200}
+        className="
+          h-15
+          w-auto
+          transition-all
+          duration-300
+          group-hover:scale-105
+          group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]
+          group-hover:drop-shadow-[0_0_25px_rgba(34,211,238,0.7)]
+          motion-reduce:transition-none
+        "
+      />
+    </div>
 
-            {/* Auth Button */}
-            <div className="relative z-[9999]">
-              <AuthButton user={user} />
-            </div>
-          </div>
-        </header>
+    {/* Auth Button */}
+    <div className="relative z-[9999]">
+      <AuthButton user={user} />
+    </div>
+
+  </div>
+</header>
 
         {/* =====================================================
             HERO SECTION
@@ -199,7 +206,6 @@ export default async function Home() {
             ================================================= */}
             {products.length === 0 && (
               <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mt-16">
-
                 {FEATURES.map(
                   ({ icon: Icon, title, description }, index) => (
                     <div
