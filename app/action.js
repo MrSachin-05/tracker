@@ -3,7 +3,6 @@
 import { createClient } from "@/utils/supabase/server";
 import { scrapeProduct } from "@/lib/firecrawl";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export async function addProduct(formData) {
   const url = formData.get("url");
@@ -174,12 +173,28 @@ export async function getPriceHistory(productId) {
   }
 }
 
+/* =========================================================
+   SIGN OUT
+   ========================================================= */
+
 export async function signOut() {
   const supabase = await createClient();
 
-  await supabase.auth.signOut();
+  const { error } = await supabase.auth.signOut();
 
-  revalidatePath("/");
+  if (error) {
+    console.error("Sign out error:", error);
 
-  redirect("/");
+    return {
+      error: error.message || "Failed to sign out",
+    };
+  }
+
+  // Revalidate the complete application layout.
+  // This makes the next request use the logged-out session.
+  revalidatePath("/", "layout");
+
+  return {
+    success: true,
+  };
 }
